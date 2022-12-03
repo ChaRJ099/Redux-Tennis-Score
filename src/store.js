@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import { devToolsEnhancer } from '@redux-devtools/extension';
 import produce from "immer";
 
 // state
@@ -99,7 +100,10 @@ function reducer(state = initialState, action) {
   return state;
 }
 
-export const store = createStore(reducer);
+export const store = createStore(
+  reducer,
+  devToolsEnhancer()
+  );
 
 store.subscribe(() => {
   console.log("Nouveau state:");
